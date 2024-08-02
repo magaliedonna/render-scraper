@@ -18,8 +18,7 @@ const scrapeLogic = async (res, req) => {
   });
   try {
         let page = await browser.newPage();
-        await page.goto(url, {timeout: 60000,});
-        await page.setViewport({ width: 1280, height: 720 });
+        await page.goto(url, {waitUntil: 'load', timeout: 0});
 
         await page.waitForSelector('svg[class="verify-bar-close--icon"]');
         await page.click('svg[class="verify-bar-close--icon"]');
