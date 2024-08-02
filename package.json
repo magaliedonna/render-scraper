@@ -1,0 +1,16 @@
+{
+  "name": "scraper",
+  "version": "1.0",
+  "private": true,
+  "scripts": {
+    "start": "node scraper.js"
+  },
+  "dependencies": {
+    "@netlify/functions": "^2.8.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "~4.16.1",
+    "puppeteer": "^22.14.0",
+    "serverless-http": "^3.2.0"
+  }
+}
