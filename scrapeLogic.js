@@ -4,7 +4,6 @@ require("dotenv").config();
 const scrapeLogic = async (res, req) => {
   const url = req.query.url;
   const browser = await puppeteer.launch({
-    headless: false,
     args: [
       "--disable-setuid-sandbox",
       "--no-sandbox",
