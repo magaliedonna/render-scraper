@@ -8,8 +8,6 @@ const scrapeLogic = async (res, req) => {
     args: [
       "--disable-setuid-sandbox",
       "--no-sandbox",
-      "--single-process",
-      "--no-zygote",
     ],
     executablePath:
       process.env.NODE_ENV === "production"
@@ -19,7 +17,8 @@ const scrapeLogic = async (res, req) => {
   try {
         let page = await browser.newPage();
         await page.goto(url, {waitUntil: 'load', timeout: 0});
-
+        console.log('url charger');
+    
         await page.waitForSelector('svg[class="verify-bar-close--icon"]');
         await page.click('svg[class="verify-bar-close--icon"]');
 
