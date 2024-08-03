@@ -16,19 +16,19 @@ const scrapeLogic = async (res, req) => {
         : puppeteer.executablePath(),
   });
   try {
-        let page = await browser.newPage();
-        await page.goto(url, {timeout: 0});
-        console.log('url charger');
+        const page = await browser.newPage();
+        await page.goto(url);
+     
     
         await page.waitForSelector('svg[class="verify-bar-close--icon"]');
         await page.click('svg[class="verify-bar-close--icon"]');
 
        const infos = await page.evaluate(() => {
-            let img = document.querySelector('div[data-e2e="user-avatar"] span img').getAttribute('src');
-            let username = document.querySelector('h1[data-e2e="user-title"]').innerText;
-            let bio = document.querySelector('h2[data-e2e="user-bio"]').innerText;
-            let like = document.querySelector('strong[data-e2e="likes-count"]').innerText;
-            let followers = document.querySelector('strong[data-e2e="followers-count"]').innerText;;
+            const img = document.querySelector('div[data-e2e="user-avatar"] span img').getAttribute('src');
+            const username = document.querySelector('h1[data-e2e="user-title"]').innerText;
+            const bio = document.querySelector('h2[data-e2e="user-bio"]').innerText;
+            const like = document.querySelector('strong[data-e2e="likes-count"]').innerText;
+            const followers = document.querySelector('strong[data-e2e="followers-count"]').innerText;;
         return{img, username, bio, like, followers};
 
        });
