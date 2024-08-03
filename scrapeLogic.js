@@ -4,6 +4,7 @@ require("dotenv").config();
 const scrapeLogic = async (res, req) => {
   const url = req.query.url;
   const browser = await puppeteer.launch({
+    headless: true,
     args: [
       "--disable-setuid-sandbox",
       "--no-sandbox",
@@ -20,11 +21,11 @@ const scrapeLogic = async (res, req) => {
 
         
         await page.goto(url);
-        await page.setViewport({ width: 1280, height: 720 });
-        await page.setUserAgent('Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36');
+        await page.setViewport({ width: 720, height: 1280 });
+        await page.setUserAgent('Mozilla/5.0 (Linux; Android 4.2.2; Nexus 7 Build/JDQ39) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.90 Safari/537.36');
 ;
-        /*await page.waitForSelector('svg[class="verify-bar-close--icon"]', { visible: true });
-        await page.click('svg[class="verify-bar-close--icon"]', { delay: 100 });*/
+        await page.waitForSelector('svg[class="verify-bar-close--icon"]', { visible: true });
+        await page.click('svg[class="verify-bar-close--icon"]', { delay: 100 });
 
        const infos = await page.evaluate(() => {
             let img = document.querySelector('div[data-e2e="user-avatar"] span img').getAttribute('src');
