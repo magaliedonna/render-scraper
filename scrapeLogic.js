@@ -21,7 +21,8 @@ const scrapeLogic = async (res, req) => {
 
         
         await page.goto(url);
-        await page.setViewport({ width: 720, height: 1280 });
+        await page.setViewport({ width: 720, height: 1280, deviceScaleFactor: 1,
+            isMobile: true });
         await page.setUserAgent('Mozilla/5.0 (Linux; Android 4.2.2; Nexus 7 Build/JDQ39) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.90 Safari/537.36');
 ;
         await page.waitForSelector('svg[class="verify-bar-close--icon"]', { visible: true });
